@@ -35,6 +35,12 @@ To run this project, you will need to add the following environment variables to
 
 `date`
 
+'inflation'
+
+'CPI'
+
+'Personal_Income'
+
 More variables will be included later on in this project
 
 
