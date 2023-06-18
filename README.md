@@ -1,5 +1,5 @@
 
-# United States President Performances (1933-2021)
+# United States President Performances (1969-2016)
 
 I embark on a journey using economic indicators, and some sociological metrics to determine which US President has had the best performance on both ends of the spectrum. There will be many economic indicators as well as the ever-so favorite the public approval rating as to the presidents performance on the public relations end. This will be a project only on available metrics in economics such as GDP, inflation rates, unemployment rates, SP500 values, and many more. There will be a machine learning model searching these candidates for the best possible metrics between all the variables. 
 
