@@ -1,29 +1,30 @@
+create database economics; 
+use economics; 
 
-select * from approval_polls ap  ; 
+select * from approval_polls; 
 
-select avg(approve)as Approval ,avg(disapprove) as disapproval
-from approval_polls ap 
-where president='Clinton'
+CREATE TABLE approval_disapproval AS
+SELECT President, AVG(approve) AS approval, AVG(disapprove) AS disapproval
+FROM approval_polls
+GROUP BY President;
 
+select * from approval_disapproval; 
+INSERT INTO approval_disapproval (President, approval, disapproval)
+VALUES ('Joe Biden', 41, 54);
 
-select president , avg(approve) as approval, avg(disapprove) as disapproval 
-from approval_polls ap
-group by distinct president ; 
+select * from approval_disapproval; 
 
-create table approval_disapproval as 
-select president , avg(approve) as approval, avg(disapprove) as disapproval 
-from approval_polls ap
-group by distinct president ; 
+ALTER TABLE approval_disapproval
+ADD years VARCHAR(50);
 
-alter table approval_disapproval 
-add years varchar; 
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE approval_disapproval
+SET years = '2017-2021'
+WHERE President = 'Trump';
 
 update approval_disapproval 
-set years = '2017-2021'
-where president = 'Trump';
-
-update approval_disapproval 
-set years = '1933-1945'
+set years = '1933-1944'
 where president = 'Roosevelt';
 
 update approval_disapproval 
@@ -43,35 +44,52 @@ set years = '1963-1969'
 where president = 'Johnson';
 
 update approval_disapproval 
-set years = '1969-1974'
+set years = '1969-1973'
 where president = 'Nixon';
 
 update approval_disapproval 
-set years = '1974-1977'
+set years = '1974-1976'
 where president = 'Ford';
 
 update approval_disapproval 
-set years = '1977-1981'
+set years = '1977-1980'
 where president = 'Carter';
 
 update approval_disapproval 
-set years = '1981-1989'
+set years = '1981-1988'
 where president = 'Reagan';
 
 update approval_disapproval 
-set years = '1989-1993'
+set years = '1989-1992'
 where president = 'Bush 1';
 
 update approval_disapproval 
-set years = '1993-2001'
+set years = '1993-2000'
 where president = 'Clinton';
 
 update approval_disapproval 
-set years = '2001-2009'
+set years = '2001-2008'
 where president = 'Bush 2';
 
 update approval_disapproval 
-set years = '2009-2017'
+set years = '2009-2016'
 where president = 'Obama';
+
+UPDATE approval_disapproval
+SET years = '2022'
+WHERE president = 'Joe Biden'; 
+
+SELECT * FROM approval_disapproval; 
+
+SELECT @@hostname;
+SELECT USER();
+
+DROP USER 'root'@'localhost';
+CREATE USER 'bozo'@'localhost' IDENTIFIED BY '1234567';
+GRANT ALL PRIVILEGES ON *.* TO 'bozo'@'localhost';
+FLUSH PRIVILEGES;
+
+
+
 
 
